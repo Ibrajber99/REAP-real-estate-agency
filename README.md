@@ -23,8 +23,8 @@ dsfds
     -bootstrap.chosen
     
 ## 3rd party resources
-    -https://quickchart.io/
-    -https://www.google.com/maps
+    -https://quickchart.io/ --> data visualization
+    -https://www.google.com/maps --> locator
     
     
 
