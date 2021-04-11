@@ -1,0 +1,84 @@
+﻿@model Real_Estate_Project.ViewModels.ListingViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Listing</h4>
+    <hr />
+    <div class="card">
+        <div class="card-body">
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.InputModel.Customer, new { @class = "text-primary" })
+                        @Html.DisplayFor(model => model.InputModel.Customer.FullName)
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.InputModel.Price, new { @class = "text-primary" })
+                        @Html.DisplayFor(model => model.InputModel.Price)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.InputModel.AssociatedAgent, new { @class = "text-primary" })
+                        @Html.DisplayFor(model => model.InputModel.AssociatedAgent.FullName)
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.InputModel.ListingAddress.StreetAddress, new { @class = "text-primary" })
+                        @Html.DisplayFor(model => model.InputModel.ListingAddress.StreetAddress)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.InputModel.ListingAddress.Municipality, new { @class = "text-primary" })
+                        @Html.DisplayFor(model => model.InputModel.ListingAddress.Municipality)
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.InputModel.ListingAddress.Province, new { @class = "text-primary" })
+                        @Html.DisplayFor(model => model.InputModel.ListingAddress.Province)
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.InputModel.ListingAddress.PostalCode, new { @class = "text-primary" })
+                        @Html.DisplayFor(model => model.InputModel.ListingAddress.PostalCode)
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.InputModel.ListingAddress.AddressDetails, new { @class = "text-primary" })
+                        @Html.DisplayFor(model => model.InputModel.ListingAddress.AddressDetails)
+                    </div>
+                </div>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    </div>
+</div>

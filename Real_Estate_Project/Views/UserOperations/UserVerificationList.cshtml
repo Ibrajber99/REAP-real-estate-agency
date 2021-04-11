@@ -1,0 +1,131 @@
+﻿@model Real_Estate_Project.ViewModels.OperatingUser_ViewModels.VerificationListViewModel
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "UserVerificationList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Verification List</h2>
+
+<div class="row">
+    <div class="col-8">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <table class="table table-dark">
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.InputModel.FirstName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.InputModel.LastName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.InputModel.DateOfBirth)
+                        </th>
+                        <th>
+                            @Html.ActionLink(Html.DisplayNameFor(model =>
+                            model.InputModel.IsVerified).ToString()
+                            , "UserVerificationList",
+                            new { orderBy = Model.IsVerifiedSearchParam })
+                        </th>
+                        <th></th>
+                    </tr>
+
+                    @foreach (var item in Model.usersList)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.FirstName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.LastName)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.DateOfBirth)
+                            </td>
+                            <td>
+                                @if (item.IsVerified)
+                                {
+                                    @Html.Label("Verified", new { @class = "text-success" })
+                                }
+                                else
+                                {
+                                    @Html.Label("Under review", new { @class = "text-danger" })
+                                }
+                            </td>
+                            <td>
+                                @Html.ActionLink("Details", "UserVerificationList", "UserOperations",
+                               new { selectedUser = item.ID,page = Model.usersList.PageNumber,orderBy = Model.CurrentSort }, null)
+                            </td>
+                        </tr>
+                    }
+                </table>
+                Page @(Model.usersList.PageCount < Model.usersList.PageNumber ? 0 : Model.usersList.PageNumber) of @Model.usersList.PageCount
+                @Html.PagedListPager(Model.usersList, page => Url.Action("UserVerificationList", new
+           {
+               page = page,
+               orderBy = Model.CurrentSort,
+           }))
+            </div>
+        </div>
+    </div>
+    @if (Model.CurrentViewingModel != null)
+    {
+        <div class="col-4">
+            <div class="card text-white bg-dark mb-3">
+                <div class="card-body">
+                    <img src="@Url.Action("DisplayUserLicense", new { id = Model.CurrentViewingModel.ID})"
+                         alt="Listing Image" class="d-block w-50" />
+                    <br />
+                    <div class="row">
+                        <div class="col-12">
+                            @Html.LabelFor(model => model.CurrentViewingModel.CurrentDrivingLicense.LicenseExpiryDate, null, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.CurrentViewingModel.CurrentDrivingLicense.LicenseExpiryDate)
+                        </div>
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CurrentViewingModel.FirstName, null, new { @class = "text-primary" })
+                                @Html.DisplayFor(model => model.CurrentViewingModel.FirstName)
+                            </div>
+
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CurrentViewingModel.LastName, null, new { @class = "text-primary" })
+                                @Html.DisplayFor(model => model.CurrentViewingModel.LastName)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CurrentViewingModel.DateOfBirth, null, new { @class = "text-primary" })
+                                @Html.DisplayFor(model => model.CurrentViewingModel.DateOfBirth)
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CurrentViewingModel.IsVerified, null, new { @class = "text-primary" })
+                                @if (Model.CurrentViewingModel.IsVerified)
+                                {
+                                    @Html.Label("Verified", new { @class = "text-success" })
+                                }
+                                else
+                                {
+                                    @Html.Label("Under review", new { @class = "text-danger" })
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <button class="btn btn-outline-success">
+                        @Html.ActionLink("Verify User", "VerifyUser", "UserOperations",
+                       new { userId = Model.CurrentViewingModel.ID }, null)
+                    </button>
+                </div>
+            </div>
+        </div>
+    }
+</div>

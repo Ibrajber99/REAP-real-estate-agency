@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNet.Identity
+
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+    <ul class="navbar-nav" style="margin-left:40em;">
+        <li>
+            @Html.ActionLink("Users", "GetUsers", "RoleFilter", routeValues: null, htmlAttributes: new { @class = "nav-link", type = "button" })
+        </li>
+        <li>
+            @Html.ActionLink("Customers", "GetCustomers", "RoleFilter", routeValues: null, htmlAttributes: new { @class = "nav-link", type = "button" })
+        </li>
+        <li>
+            @Html.ActionLink("Listings", "Index", "ListingOperations", routeValues: null, htmlAttributes: new { @class = "nav-link", type = "button" })
+        </li>
+        <li>
+            @Html.ActionLink("Viewings", "Index", "Viewings", routeValues: null, htmlAttributes: new { @class = "nav-link", type = "button" })
+        </li>
+        <li>
+            @Html.ActionLink("Verification", "UserVerificationList", "UserOperations", routeValues: null, htmlAttributes: new { @class = "nav-link", type = "button" })
+        </li>
+        <li></li>
+        <li>
+            <span style="font-size:x-large;">
+                <a href="@Url.Action("Index","Dashboard")">
+                    <i class="fas fa-tachometer-alt"></i>
+                </a>
+            </span>
+        </li>
+        <li style="margin-left:30em;">
+            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "UserProfile", "UserOperations", routeValues: null, htmlAttributes: new { @class = "nav-link", title = "Manage" })
+        </li>
+    
+        <li>
+            <span style="font-size:x-large;">
+                <a href="javascript:document.getElementById('logoutForm').submit()">
+                    <i class="fas fa-sign-out-alt"></i>
+                </a>
+            </span>
+        </li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav" style="margin-left:105em;">
+        <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

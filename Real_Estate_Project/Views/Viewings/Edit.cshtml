@@ -1,0 +1,53 @@
+﻿@model Real_Estate_Project.ViewModels.ViewingViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+            <h4>Viewing</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            @Html.HiddenFor(model => model.ReadonlyViewingModel.ID)
+            @Html.HiddenFor(model => model.ReadonlyViewingModel.UserCreatorId)
+            @Html.HiddenFor(model => model.ReadonlyViewingModel.CreatedDate)
+            @Html.HiddenFor(model => model.ReadonlyViewingModel.IsActive)
+            @Html.HiddenFor(model => model.ListingId)
+            @Html.Partial("_ViewingModification", Model)
+
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-outline-success" />
+                </div>
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#AgentId").chosen();
+            $("#CustomerID").chosen();
+        });
+    </script>
+}

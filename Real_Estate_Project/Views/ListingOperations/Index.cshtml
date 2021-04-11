@@ -1,0 +1,127 @@
+﻿@model Real_Estate_Project.ViewModels.ListingViewModel
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="jumbotron card border-info" style="margin: 0 auto; width:60em;">
+        <div class="row">
+            <h1 class="display-4" style="margin:0 auto;">Listings</h1>
+        </div>
+        <br />
+        <div class="row">
+            <p class="lead" style="margin:0 auto;">List your house for potential clients.</p>
+        </div>
+        <br />
+        <hr />
+        <div class="row">
+            <button class="btn btn-outline-warning" style="margin: 0 auto;">
+                @Html.ActionLink("Register Listing", "Create")
+            </button>
+            <button class="btn btn-outline-danger" style="margin: 0 auto;">
+                @Html.ActionLink("Advanced Search", "SearchListing")
+            </button>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<div class="row">
+    <div class="col-12">
+        @if (Model.Listings.Count > 0)
+        {
+            <div class="row">
+                @foreach (var item in Model.Listings)
+                {
+                    <div class="col-3" style="margin-bottom:3em">
+                        <div class="flip-card text-white bg-dark mb-3 card border-success mb-3">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    @if (item != null)
+                                    {
+                                        <img class="card-img-top" src="@Url.Action("DisplayFile", new { id = item.ID })"
+                                             alt="Listing Image" style="height:inherit" />
+
+                                    }
+                                    else
+                                    {
+                                        <img class="card-img-top" src="https://www.flaticon.com/premium-icon/icons/svg/2243/2243783.svg">
+                                    }
+                                </div>
+
+                                <div class="flip-card-back">
+                                    <h5 class="card-title">@item.AssociatedAgent.FullName</h5>
+                                    <hr />
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => item.Price, new { @class = "text-success" })
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => item.ListingAddress.Municipality, new { @class = "text-success" })
+                                        @Html.DisplayFor(modelItem => item.ListingAddress.Municipality)
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => item.SquareFootage, new { @class = "text-success" })
+                                        @Html.DisplayFor(modelItem => item.SquareFootage)
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => item.NumOfBeds, new { @class = "text-success" })
+                                        @Html.DisplayFor(modelItem => item.NumOfBeds)
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => item.NumOfBaths, new { @class = "text-success" })
+                                        @Html.DisplayFor(modelItem => item.NumOfBaths)
+                                    </div>
+                                    <span style="font-size:x-large">
+                                        <a href="@Url.Action("Edit","ListingOperations",new { id = item.ID })">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                    </span>
+                                    |
+                                    <span style="font-size:x-large">
+                                        <a href="@Url.Action("Details","ListingOperations",new { id = item.ID })">
+                                            <i class="fas fa-info-circle"></i>
+                                        </a>
+                                    </span>
+                                    |
+                                    <span style="font-size:x-large">
+                                        <a href="@Url.Action("Delete","ListingOperations",new { id = item.ID })">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </span>
+                                    |
+                                    @Html.ActionLink("Request Viewing", "Create", "Viewings",
+                                    new { listingId = item.ID }, new { @class = "text-warning" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="card text-white bg-dark mb-3 card border-success mb-3" style="margin-left:1em; margin-right:1em; padding-left:1em; padding-top:1em;">
+                Page @(Model.Listings.PageCount < Model.Listings.PageNumber ? 0 : Model.Listings.PageNumber) of @Model.Listings.PageCount
+                @Html.PagedListPager(Model.Listings, page => Url.Action("Index", new { page = page }))
+            </div>
+        }
+        else
+        {
+            <div class="jumbotron card border-danger mb-3">
+                <div class="row">
+                    <p class="lead" style="margin:0 auto;">No Listings Available</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+@Styles.Render("~/Content/custom/CardFlip.css")
+
+
+

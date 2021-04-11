@@ -1,0 +1,13 @@
+﻿@model Real_Estate_Project.Models.Domain_Models.SimpleErrorModel
+
+
+@{
+    ViewBag.Title = "RoleNotAuthorized";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2 class="text-danger">Not Authorized</h2>
+<h3 class="text-danger">@Model.ErrorMessage</h3>
+
+@Html.ActionLink("Go Back to Home", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+

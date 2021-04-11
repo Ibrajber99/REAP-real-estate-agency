@@ -1,0 +1,183 @@
+﻿@model Real_Estate_Project.ViewModels.OperatingUser_ViewModels.UserProfileViewModel
+
+@{
+    ViewBag.Title = "UserProfile";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>User Profile</h2>
+<div class="row">
+    <div class="col-6">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                @using (Html.BeginForm("UserProfile", "UserOperations", FormMethod.Post,
+                    new { enctype = "multipart/form-data" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(model => model.UserID)
+
+                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ProfileImageFile, htmlAttributes: new { @class = "control-label col-md-12" })
+                                @if (Model.UserProfileImage != null)
+                                {
+                                    <img src="@Url.Action("DisplayProfileImage", new { id = Model.UserProfileImage.ID })"
+                                         alt="Listing Image" class="d-block w-50" />
+                                }
+                            </div>
+                        </div>
+                        <hr />
+                        @if (Model.IsTypeAgent)
+                        {
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ProfileDriverLicense, htmlAttributes: new { @class = "control-label col-md-12" })
+                                    @if (Model.UserProfileDrivingLicense != null)
+                                    {
+                                        <img src="@Url.Action("DisplayUserLicense", new { id = Model.UserID})"
+                                             alt="Listing Image" class="d-block w-100" />
+                                    }
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    <div class="row">
+                        <div class="col-6">
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.ProfileImageFile, "", new { @type = "file" })
+                                    @Html.ValidationMessageFor(model => model.ProfileImageFile, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        @if (Model.IsTypeAgent)
+                        {
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        @Html.TextBoxFor(model => model.ProfileDriverLicense, "", new { @type = "file" })
+                                        @Html.ValidationMessageFor(model => model.ProfileDriverLicense, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-md-10">
+                                        @Html.LabelFor(model => model.LicenseExpiryDate)
+                                        @Html.EditorFor(model => model.LicenseExpiryDate, 
+                                       new { htmlAttributes = new { @class = "form-control", type = "Date" } })
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-outline-success" />
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="card text-white bg-dark mb-3">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.UserName, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.UserName)
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.FullName, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.FullName)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DateOfBirth, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.DateOfBirth)
+                        </div>
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.IsVerified, new { @class = "text-primary" })
+
+                            @if (Model.IsVerified)
+                            {
+                                @Html.Label("Verified", new { @class = "text-success" })
+                            }
+                            else
+                            {
+                                @Html.Label("Under review", new { @class = "text-danger" })
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.StreetAddress, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.StreetAddress)
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Municipality, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.Municipality)
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Province, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.Province)
+                        </div>
+                    </div>
+
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PostalCode, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.PostalCode)
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.CellPhone, new { @class = "text-primary" })
+                    @Html.DisplayFor(model => model.CellPhone)
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $("#LicenseExpiryDate").hide();
+    $("label[for='LicenseExpiryDate']").hide();
+    
+    $("#ProfileDriverLicense").change(function () {
+        var fileUpload = $("#ProfileDriverLicense").val()
+        if (fileUpload) {
+            $("#LicenseExpiryDate").show()
+            $("label[for='LicenseExpiryDate']").show()
+        } 
+    })
+</script>
+

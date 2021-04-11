@@ -1,0 +1,72 @@
+﻿@model  Real_Estate_Project.ViewModels.ViewingViewModel
+
+@{
+    ViewBag.Title = "_ListingModification";
+}
+
+<div class="row">
+    <div class="col-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.ListingId, htmlAttributes: new { @class = "control-label col-md-8" })<br />
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.PickedListingPostalCode, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })<br />
+                @if(Model.ReadonlyViewingModel != null)
+                {
+                   @Html.ActionLink("Pick a Listing", "SearchListing", "ListingOperations", new {ViewingId = Model.ReadonlyViewingModel.ID}, null)
+                }
+                else
+                {
+                   @Html.ActionLink("Pick a Listing", "SearchListing", "ListingOperations", new {}, null)
+                }
+
+                @Html.ValidationMessageFor(model => model.ListingId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.AgentId, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.AgentId, new SelectList(Model.Agents, "ID", "FullName")
+                  , "Select Viewing Host", new { @class = "control-label col-md-12 text-warning" })
+                @Html.ValidationMessageFor(model => model.AgentId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="col-4">
+        <div class="form-group">
+            @Html.LabelFor(model => model.CustomerID, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.CustomerID, new SelectList(Model.Customers, "ID", "FullName")
+                , "Select a Viewing Guest", new { @class = "control-label col-md-12" })
+                @Html.ValidationMessageFor(model => model.CustomerID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div class="form-group">
+            @Html.LabelFor(model => model.ViewingStart, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(c => c.ViewingStart, "{0:s}", new { @class = "form-control", type = "datetime-local",min =DateTime.Now.ToString("yyyy-MM-dd") })
+                @Html.ValidationMessageFor(model => model.ViewingStart, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="form-group">
+            @Html.LabelFor(model => model.ViewingDuration, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ViewingDuration, new SelectList(Model.DurationList), "Pick a viewing Duration",
+                new { htmlAttributes = new { @class = "form-control" } })
+
+                @Html.ValidationMessageFor(model => model.ViewingDuration, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+</div>
+
+

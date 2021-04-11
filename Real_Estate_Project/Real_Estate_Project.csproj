@@ -1,0 +1,1100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.Net.Compilers.3.8.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.3.8.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B709EC62-6639-4AF6-8BC7-64ECF97880BD}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Real_Estate_Project</RootNamespace>
+    <AssemblyName>Real_Estate_Project</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44372</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>4.0</TypeScriptToolsVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.EntityFramework, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.EntityFramework.1.0.1\lib\net45\PagedList.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Linq" />
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices" />
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation" />
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Thread" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Abstractions, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Abstractions.5.11.1\lib\net47\Unity.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Container, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Container.5.11.1\lib\net47\Unity.Container.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mvc, Version=5.11.1.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Mvc.5.11.1\lib\net47\Unity.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.2.0\lib\net40\WebActivatorEx.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.AspNet.Identity.Core">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Owin">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Owin.2.2.3\lib\net45\Microsoft.AspNet.Identity.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\IdentityConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="App_Start\UnityMvcActivator.cs" />
+    <Compile Include="Authorization_Utilities\RoleNames.cs" />
+    <Compile Include="Authorization_Utilities\UserIdentityManager.cs" />
+    <Compile Include="Business_services\DashboardService\DashboardService.cs" />
+    <Compile Include="Business_services\DashboardService\IDashboardService.cs" />
+    <Compile Include="Business_services\ViewingService\IViewingService.cs" />
+    <Compile Include="Business_services\ViewingService\ViewingService.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerOperationsController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ListingOperationsController.cs" />
+    <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RoleFilterController.cs" />
+    <Compile Include="Controllers\UserOperationsController.cs" />
+    <Compile Include="Controllers\ViewingsController.cs" />
+    <Compile Include="Custom_Validations\Min19YearsValidation.cs" />
+    <Compile Include="Custom_Validations\SINValidation.cs" />
+    <Compile Include="DataAccess\Interfaces\ICustomerRepo.cs" />
+    <Compile Include="DataAccess\Interfaces\IDashboardRepo.cs" />
+    <Compile Include="DataAccess\Interfaces\IListingRepo.cs" />
+    <Compile Include="DataAccess\Interfaces\ICrudRepo.cs" />
+    <Compile Include="DataAccess\Interfaces\IViewingRepo.cs" />
+    <Compile Include="DataAccess\Sql_Classes\SqlCustomer.cs" />
+    <Compile Include="DataAccess\Sql_Classes\SqlDashboard.cs" />
+    <Compile Include="DataAccess\Sql_Classes\SqlListing.cs" />
+    <Compile Include="DataAccess\Sql_Classes\SqlViewing.cs" />
+    <Compile Include="Migrations\202101232146057_checkingState.cs" />
+    <Compile Include="Migrations\202101232146057_checkingState.Designer.cs">
+      <DependentUpon>202101232146057_checkingState.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101232153328_UpdatingFKForUser.cs" />
+    <Compile Include="Migrations\202101232153328_UpdatingFKForUser.Designer.cs">
+      <DependentUpon>202101232153328_UpdatingFKForUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241427443_Initial.cs" />
+    <Compile Include="Migrations\202101241427443_Initial.Designer.cs">
+      <DependentUpon>202101241427443_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241431382_AddingCustomerEntity.cs" />
+    <Compile Include="Migrations\202101241431382_AddingCustomerEntity.Designer.cs">
+      <DependentUpon>202101241431382_AddingCustomerEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241437228_AddingCustomerEntity1.cs" />
+    <Compile Include="Migrations\202101241437228_AddingCustomerEntity1.Designer.cs">
+      <DependentUpon>202101241437228_AddingCustomerEntity1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241437558_AddingCustomerEntity2.cs" />
+    <Compile Include="Migrations\202101241437558_AddingCustomerEntity2.Designer.cs">
+      <DependentUpon>202101241437558_AddingCustomerEntity2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241439101_AddingCustoemrFkRelationShip.cs" />
+    <Compile Include="Migrations\202101241439101_AddingCustoemrFkRelationShip.Designer.cs">
+      <DependentUpon>202101241439101_AddingCustoemrFkRelationShip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241440153_AddingCustmerWithFk.cs" />
+    <Compile Include="Migrations\202101241440153_AddingCustmerWithFk.Designer.cs">
+      <DependentUpon>202101241440153_AddingCustmerWithFk.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241503139_AddDatePropToCustomer.cs" />
+    <Compile Include="Migrations\202101241503139_AddDatePropToCustomer.Designer.cs">
+      <DependentUpon>202101241503139_AddDatePropToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241517352_addingChnages.cs" />
+    <Compile Include="Migrations\202101241517352_addingChnages.Designer.cs">
+      <DependentUpon>202101241517352_addingChnages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241520586_addingCustoemrFkChanges.cs" />
+    <Compile Include="Migrations\202101241520586_addingCustoemrFkChanges.Designer.cs">
+      <DependentUpon>202101241520586_addingCustoemrFkChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241552092_UpodatingCustomerEntity.cs" />
+    <Compile Include="Migrations\202101241552092_UpodatingCustomerEntity.Designer.cs">
+      <DependentUpon>202101241552092_UpodatingCustomerEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241553152_AddingCustoemrEntity.cs" />
+    <Compile Include="Migrations\202101241553152_AddingCustoemrEntity.Designer.cs">
+      <DependentUpon>202101241553152_AddingCustoemrEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241555089_AddingCustomerChnage.cs" />
+    <Compile Include="Migrations\202101241555089_AddingCustomerChnage.Designer.cs">
+      <DependentUpon>202101241555089_AddingCustomerChnage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241555421_AddingCustomerChange.cs" />
+    <Compile Include="Migrations\202101241555421_AddingCustomerChange.Designer.cs">
+      <DependentUpon>202101241555421_AddingCustomerChange.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241605244_AddingCUserToCustoemrrelationship.cs" />
+    <Compile Include="Migrations\202101241605244_AddingCUserToCustoemrrelationship.Designer.cs">
+      <DependentUpon>202101241605244_AddingCUserToCustoemrrelationship.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241615052_RemovingKeys.cs" />
+    <Compile Include="Migrations\202101241615052_RemovingKeys.Designer.cs">
+      <DependentUpon>202101241615052_RemovingKeys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241743280_DropCustomerTable.cs" />
+    <Compile Include="Migrations\202101241743280_DropCustomerTable.Designer.cs">
+      <DependentUpon>202101241743280_DropCustomerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101241744083_AddCustomerTable.cs" />
+    <Compile Include="Migrations\202101241744083_AddCustomerTable.Designer.cs">
+      <DependentUpon>202101241744083_AddCustomerTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101251010095_AddingRelationFromUserToCustomer.cs" />
+    <Compile Include="Migrations\202101251010095_AddingRelationFromUserToCustomer.Designer.cs">
+      <DependentUpon>202101251010095_AddingRelationFromUserToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101251123400_AddingRelationsToCustomer.cs" />
+    <Compile Include="Migrations\202101251123400_AddingRelationsToCustomer.Designer.cs">
+      <DependentUpon>202101251123400_AddingRelationsToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101271012131_AddingCustomerAddressTable.cs" />
+    <Compile Include="Migrations\202101271012131_AddingCustomerAddressTable.Designer.cs">
+      <DependentUpon>202101271012131_AddingCustomerAddressTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101271056215_AddListing.cs" />
+    <Compile Include="Migrations\202101271056215_AddListing.Designer.cs">
+      <DependentUpon>202101271056215_AddListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101271841578_AddingChangesToDB.cs" />
+    <Compile Include="Migrations\202101271841578_AddingChangesToDB.designer.cs">
+      <DependentUpon>202101271841578_AddingChangesToDB.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301221018_ChanginFKRealtionInListing.cs" />
+    <Compile Include="Migrations\202101301221018_ChanginFKRealtionInListing.Designer.cs">
+      <DependentUpon>202101301221018_ChanginFKRealtionInListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301232440_ChanginFKRealtionInListingCustomer.cs" />
+    <Compile Include="Migrations\202101301232440_ChanginFKRealtionInListingCustomer.Designer.cs">
+      <DependentUpon>202101301232440_ChanginFKRealtionInListingCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301233474_ChanginFKRealtionInListingCustomer1.cs" />
+    <Compile Include="Migrations\202101301233474_ChanginFKRealtionInListingCustomer1.Designer.cs">
+      <DependentUpon>202101301233474_ChanginFKRealtionInListingCustomer1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301235015_ChanginFKRealtionInListingCustomer2.cs" />
+    <Compile Include="Migrations\202101301235015_ChanginFKRealtionInListingCustomer2.Designer.cs">
+      <DependentUpon>202101301235015_ChanginFKRealtionInListingCustomer2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301238073_ReAddingRelationshipsToListing.cs" />
+    <Compile Include="Migrations\202101301238073_ReAddingRelationshipsToListing.Designer.cs">
+      <DependentUpon>202101301238073_ReAddingRelationshipsToListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301240407_removingRelationToCustomerinListing.cs" />
+    <Compile Include="Migrations\202101301240407_removingRelationToCustomerinListing.Designer.cs">
+      <DependentUpon>202101301240407_removingRelationToCustomerinListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301243391_addingRealtionToListing.cs" />
+    <Compile Include="Migrations\202101301243391_addingRealtionToListing.Designer.cs">
+      <DependentUpon>202101301243391_addingRealtionToListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301244435_addingRealtionToListing1.cs" />
+    <Compile Include="Migrations\202101301244435_addingRealtionToListing1.Designer.cs">
+      <DependentUpon>202101301244435_addingRealtionToListing1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301245408_addingRealtionToListing11.cs" />
+    <Compile Include="Migrations\202101301245408_addingRealtionToListing11.Designer.cs">
+      <DependentUpon>202101301245408_addingRealtionToListing11.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301246541_addingRealtionToListing2.cs" />
+    <Compile Include="Migrations\202101301246541_addingRealtionToListing2.Designer.cs">
+      <DependentUpon>202101301246541_addingRealtionToListing2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301254309_reAddingRealtionToListingBetweenAsosciatedAgent.cs" />
+    <Compile Include="Migrations\202101301254309_reAddingRealtionToListingBetweenAsosciatedAgent.Designer.cs">
+      <DependentUpon>202101301254309_reAddingRealtionToListingBetweenAsosciatedAgent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301256125_reAddingRealtionToListingBetweenUsers.cs" />
+    <Compile Include="Migrations\202101301256125_reAddingRealtionToListingBetweenUsers.Designer.cs">
+      <DependentUpon>202101301256125_reAddingRealtionToListingBetweenUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301613572_AddingSummaryFeatureColumnToListing.cs" />
+    <Compile Include="Migrations\202101301613572_AddingSummaryFeatureColumnToListing.Designer.cs">
+      <DependentUpon>202101301613572_AddingSummaryFeatureColumnToListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301632349_vAddingDateColumnsToListing.cs" />
+    <Compile Include="Migrations\202101301632349_vAddingDateColumnsToListing.Designer.cs">
+      <DependentUpon>202101301632349_vAddingDateColumnsToListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301739222_AddingPriceColumn.cs" />
+    <Compile Include="Migrations\202101301739222_AddingPriceColumn.Designer.cs">
+      <DependentUpon>202101301739222_AddingPriceColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101301741049_SettingPriceColumnToNotNullable.cs" />
+    <Compile Include="Migrations\202101301741049_SettingPriceColumnToNotNullable.Designer.cs">
+      <DependentUpon>202101301741049_SettingPriceColumnToNotNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102021022088_removingOfficeEamilFromUserEntity.cs" />
+    <Compile Include="Migrations\202102021022088_removingOfficeEamilFromUserEntity.Designer.cs">
+      <DependentUpon>202102021022088_removingOfficeEamilFromUserEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102021117543_AddingNumberOfStoriesColumnToListing.cs" />
+    <Compile Include="Migrations\202102021117543_AddingNumberOfStoriesColumnToListing.Designer.cs">
+      <DependentUpon>202102021117543_AddingNumberOfStoriesColumnToListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102021128434_SettingNumberOfStoriedColumnToRequired.cs" />
+    <Compile Include="Migrations\202102021128434_SettingNumberOfStoriedColumnToRequired.Designer.cs">
+      <DependentUpon>202102021128434_SettingNumberOfStoriedColumnToRequired.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102032131396_testingconn.cs" />
+    <Compile Include="Migrations\202102032131396_testingconn.Designer.cs">
+      <DependentUpon>202102032131396_testingconn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041536568_addingRelationBetweenUserToListing.cs" />
+    <Compile Include="Migrations\202102041536568_addingRelationBetweenUserToListing.Designer.cs">
+      <DependentUpon>202102041536568_addingRelationBetweenUserToListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041539190_removingRealtionListingToOperaitngUser.cs" />
+    <Compile Include="Migrations\202102041539190_removingRealtionListingToOperaitngUser.Designer.cs">
+      <DependentUpon>202102041539190_removingRealtionListingToOperaitngUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041549046_AddingRelationUserToListing.cs" />
+    <Compile Include="Migrations\202102041549046_AddingRelationUserToListing.Designer.cs">
+      <DependentUpon>202102041549046_AddingRelationUserToListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041704115_updateListings.cs" />
+    <Compile Include="Migrations\202102041704115_updateListings.Designer.cs">
+      <DependentUpon>202102041704115_updateListings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041719116_droppingListing.cs" />
+    <Compile Include="Migrations\202102041719116_droppingListing.Designer.cs">
+      <DependentUpon>202102041719116_droppingListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041724236_AddingRealtionShipUserToListing.cs" />
+    <Compile Include="Migrations\202102041724236_AddingRealtionShipUserToListing.Designer.cs">
+      <DependentUpon>202102041724236_AddingRealtionShipUserToListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041725420_AddingRealtionShipUserToListing1.cs" />
+    <Compile Include="Migrations\202102041725420_AddingRealtionShipUserToListing1.Designer.cs">
+      <DependentUpon>202102041725420_AddingRealtionShipUserToListing1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041728253_AddingRealtionShipUserToListing2.cs" />
+    <Compile Include="Migrations\202102041728253_AddingRealtionShipUserToListing2.Designer.cs">
+      <DependentUpon>202102041728253_AddingRealtionShipUserToListing2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041753378_checking.cs" />
+    <Compile Include="Migrations\202102041753378_checking.Designer.cs">
+      <DependentUpon>202102041753378_checking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041855229_changingAspNetUserTableColumn.cs" />
+    <Compile Include="Migrations\202102041855229_changingAspNetUserTableColumn.Designer.cs">
+      <DependentUpon>202102041855229_changingAspNetUserTableColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041956395_InitialViewing.cs" />
+    <Compile Include="Migrations\202102041956395_InitialViewing.Designer.cs">
+      <DependentUpon>202102041956395_InitialViewing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102041959492_ViewingRequirement.cs" />
+    <Compile Include="Migrations\202102041959492_ViewingRequirement.Designer.cs">
+      <DependentUpon>202102041959492_ViewingRequirement.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102052050444_deletingAllOtherContextes.cs" />
+    <Compile Include="Migrations\202102052050444_deletingAllOtherContextes.Designer.cs">
+      <DependentUpon>202102052050444_deletingAllOtherContextes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102091016486_AddingUserIsActiveColumn.cs" />
+    <Compile Include="Migrations\202102091016486_AddingUserIsActiveColumn.Designer.cs">
+      <DependentUpon>202102091016486_AddingUserIsActiveColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102091800402_addingIsArchivedColumnToCustomer.cs" />
+    <Compile Include="Migrations\202102091800402_addingIsArchivedColumnToCustomer.Designer.cs">
+      <DependentUpon>202102091800402_addingIsArchivedColumnToCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102091804139_RenamingIsArchiveColumnToIsActiveColumnCustomer.cs" />
+    <Compile Include="Migrations\202102091804139_RenamingIsArchiveColumnToIsActiveColumnCustomer.Designer.cs">
+      <DependentUpon>202102091804139_RenamingIsArchiveColumnToIsActiveColumnCustomer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102091842028_addingIsActiveColumnInListing.cs" />
+    <Compile Include="Migrations\202102091842028_addingIsActiveColumnInListing.Designer.cs">
+      <DependentUpon>202102091842028_addingIsActiveColumnInListing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102091914401_AddingIsActiveColumnToViewing.cs" />
+    <Compile Include="Migrations\202102091914401_AddingIsActiveColumnToViewing.Designer.cs">
+      <DependentUpon>202102091914401_AddingIsActiveColumnToViewing.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202102251340586_checkingChanges.cs" />
+    <Compile Include="Migrations\202102251340586_checkingChanges.Designer.cs">
+      <DependentUpon>202102251340586_checkingChanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103021041304_AddingListingImageModel.cs" />
+    <Compile Include="Migrations\202103021041304_AddingListingImageModel.Designer.cs">
+      <DependentUpon>202103021041304_AddingListingImageModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103021102338_addingIsArchivedColumnToListingImage.cs" />
+    <Compile Include="Migrations\202103021102338_addingIsArchivedColumnToListingImage.Designer.cs">
+      <DependentUpon>202103021102338_addingIsArchivedColumnToListingImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103021117335_addingRelationshipPropsandDatesProp.cs" />
+    <Compile Include="Migrations\202103021117335_addingRelationshipPropsandDatesProp.Designer.cs">
+      <DependentUpon>202103021117335_addingRelationshipPropsandDatesProp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103031721413_AddUserImageTable.cs" />
+    <Compile Include="Migrations\202103031721413_AddUserImageTable.Designer.cs">
+      <DependentUpon>202103031721413_AddUserImageTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103031925306_addingFKTOUserimageManually.cs" />
+    <Compile Include="Migrations\202103031925306_addingFKTOUserimageManually.Designer.cs">
+      <DependentUpon>202103031925306_addingFKTOUserimageManually.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103031934385_RemoveFKTOUserimageManually.cs" />
+    <Compile Include="Migrations\202103031934385_RemoveFKTOUserimageManually.Designer.cs">
+      <DependentUpon>202103031934385_RemoveFKTOUserimageManually.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103041222087_addingDriverLicensePropTOUser.cs" />
+    <Compile Include="Migrations\202103041222087_addingDriverLicensePropTOUser.Designer.cs">
+      <DependentUpon>202103041222087_addingDriverLicensePropTOUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103051138258_addingIsVerifiedColumnToUser.cs" />
+    <Compile Include="Migrations\202103051138258_addingIsVerifiedColumnToUser.Designer.cs">
+      <DependentUpon>202103051138258_addingIsVerifiedColumnToUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103141134143_addingExpiryDateFeildTOUserImageUpload.cs" />
+    <Compile Include="Migrations\202103141134143_addingExpiryDateFeildTOUserImageUpload.Designer.cs">
+      <DependentUpon>202103141134143_addingExpiryDateFeildTOUserImageUpload.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103152004472_addingDefaultImageColumn.cs" />
+    <Compile Include="Migrations\202103152004472_addingDefaultImageColumn.Designer.cs">
+      <DependentUpon>202103152004472_addingDefaultImageColumn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202103181013181_addingThumbNailColumnInListingImage.cs" />
+    <Compile Include="Migrations\202103181013181_addingThumbNailColumnInListingImage.Designer.cs">
+      <DependentUpon>202103181013181_addingThumbNailColumnInListingImage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Domain_Models\CityAreas.cs" />
+    <Compile Include="Models\Dashboard_Models\Derived_Charts\ChartBase.cs" />
+    <Compile Include="Models\Dashboard_Models\ChartClient\BaseClient.cs" />
+    <Compile Include="Models\Dashboard_Models\ChartClient\BaseClientFactory.cs" />
+    <Compile Include="Models\Dashboard_Models\ChartClient\ClientResponseModel.cs" />
+    <Compile Include="Models\Dashboard_Models\ChartClient\IBaseClient.cs" />
+    <Compile Include="Models\Dashboard_Models\DataModel.cs" />
+    <Compile Include="Models\Dashboard_Models\DataSetModel.cs" />
+    <Compile Include="Models\Dashboard_Models\Derived_Charts\DoughnutChart.cs" />
+    <Compile Include="Models\Dashboard_Models\Derived_Charts\PieChart.cs" />
+    <Compile Include="Models\Dashboard_Models\Derived_Charts\PolarChart.cs" />
+    <Compile Include="Models\Domain_Models\Customer_Models\Customer.cs" />
+    <Compile Include="Models\Domain_Models\Customer_Models\CustomerAddress.cs" />
+    <Compile Include="Models\Domain_Models\Listing_Models\ListingImage.cs" />
+    <Compile Include="Models\Domain_Models\OperatingUser_Models\OperatingUser.cs" />
+    <Compile Include="Models\Domain_Models\OperatingUser_Models\OperatingUserImage.cs" />
+    <Compile Include="Models\Domain_Models\OperatingUser_Models\UserFileType.cs" />
+    <Compile Include="Models\Domain_Models\Provinces.cs" />
+    <Compile Include="DataAccess\Interfaces\IOperatingUserRepo.cs" />
+    <Compile Include="DataAccess\Sql_Classes\SqlOperatingUsers.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101221532081_intialDb.cs" />
+    <Compile Include="Migrations\202101221532081_intialDb.Designer.cs">
+      <DependentUpon>202101221532081_intialDb.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101221604142_updatingKeysUser.cs" />
+    <Compile Include="Migrations\202101221604142_updatingKeysUser.Designer.cs">
+      <DependentUpon>202101221604142_updatingKeysUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101231341327_MakingUserFKNullable.cs" />
+    <Compile Include="Migrations\202101231341327_MakingUserFKNullable.Designer.cs">
+      <DependentUpon>202101231341327_MakingUserFKNullable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101231438178_AddingOperatingUser.cs" />
+    <Compile Include="Migrations\202101231438178_AddingOperatingUser.Designer.cs">
+      <DependentUpon>202101231438178_AddingOperatingUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101231904385_updatedKeysOnUser.cs" />
+    <Compile Include="Migrations\202101231904385_updatedKeysOnUser.Designer.cs">
+      <DependentUpon>202101231904385_updatedKeysOnUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Domain_Models\SimpleErrorModel.cs" />
+    <Compile Include="Models\Domain_Models\Viewing_Models\Viewing.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Domain_Models\Listing_Models\Heating.cs" />
+    <Compile Include="Models\Domain_Models\Listing_Models\Listing.cs" />
+    <Compile Include="Models\Domain_Models\Listing_Models\ListingAddress.cs" />
+    <Compile Include="Models\Domain_Models\Listing_Models\PropertyFeatures.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="ViewModels\Dashboard_View_Models\DashboardViewModel.cs" />
+    <Compile Include="ViewModels\HomePageViewModel.cs" />
+    <Compile Include="ViewModels\Listing_ViewModels\SearchBoxViewModel.cs" />
+    <Compile Include="ViewModels\OperatingUser_ViewModels\UserProfileViewModel.cs" />
+    <Compile Include="ViewModels\OperatingUser_ViewModels\UserSearchViewModel.cs" />
+    <Compile Include="ViewModels\OperatingUser_ViewModels\VerificationListViewModel.cs" />
+    <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\Listing_ViewModels\SearchListingViewModel.cs" />
+    <Compile Include="ViewModels\Viewing_View_Models\ViewingDateFilter.cs" />
+    <Compile Include="ViewModels\Viewing_View_Models\ViewingViewModel.cs" />
+    <Compile Include="View_Uitlity_Model_Helpers\ImageInterfaces\IImageHelper.cs" />
+    <Compile Include="View_Uitlity_Model_Helpers\ImageInterfaces\IListingImageHelper.cs" />
+    <Compile Include="View_Uitlity_Model_Helpers\ImageInterfaces\IUserImageHelper.cs" />
+    <Compile Include="View_Uitlity_Model_Helpers\ImageClasses\ListingImageHelper.cs" />
+    <Compile Include="View_Uitlity_Model_Helpers\ListingViewHelperUtilites.cs" />
+    <Compile Include="ViewModels\CustomerViewModel.cs" />
+    <Compile Include="ViewModels\Listing_ViewModels\ListingViewModel.cs" />
+    <Compile Include="ViewModels\OperatingUser_ViewModels\OperatingUserInputModel.cs" />
+    <Compile Include="ViewModels\OperatingUser_ViewModels\OperatingUserViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Startup.cs" />
+    <Compile Include="View_Uitlity_Model_Helpers\ImageClasses\UserImageHelper.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-chosen.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chosen-sprite%402x.png" />
+    <Content Include="Content\chosen-sprite.png" />
+    <Content Include="Content\custom\CardFlip.css" />
+    <Content Include="Content\custom\ContactPagecss.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\SiteImages\house.png" />
+    <Content Include="Content\SiteImages\prfile_pic.png" />
+    <Content Include="Content\SiteImages\profileImg.png" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chosen.jquery.js" />
+    <Content Include="Scripts\chosen.jquery.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\index.js.flow" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\bootstrap-chosen.scss" />
+    <Content Include="Content\bootstrap-chosen.less" />
+    <None Include="Scripts\jquery-3.5.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.5.1.js" />
+    <Content Include="Scripts\jquery-3.5.1.min.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.js" />
+    <Content Include="Scripts\jquery-3.5.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.5.1.min.map" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\src\index.js" />
+    <Content Include="Scripts\src\methods\defaults.js" />
+    <Content Include="Scripts\src\methods\destroy.js" />
+    <Content Include="Scripts\src\methods\disableEventListeners.js" />
+    <Content Include="Scripts\src\methods\enableEventListeners.js" />
+    <Content Include="Scripts\src\methods\placements.js" />
+    <Content Include="Scripts\src\methods\update.js" />
+    <Content Include="Scripts\src\modifiers\applyStyle.js" />
+    <Content Include="Scripts\src\modifiers\arrow.js" />
+    <Content Include="Scripts\src\modifiers\computeStyle.js" />
+    <Content Include="Scripts\src\modifiers\flip.js" />
+    <Content Include="Scripts\src\modifiers\hide.js" />
+    <Content Include="Scripts\src\modifiers\index.js" />
+    <Content Include="Scripts\src\modifiers\inner.js" />
+    <Content Include="Scripts\src\modifiers\keepTogether.js" />
+    <Content Include="Scripts\src\modifiers\offset.js" />
+    <Content Include="Scripts\src\modifiers\preventOverflow.js" />
+    <Content Include="Scripts\src\modifiers\shift.js" />
+    <Content Include="Scripts\src\utils\clockwise.js" />
+    <Content Include="Scripts\src\utils\computeAutoPlacement.js" />
+    <Content Include="Scripts\src\utils\debounce.js" />
+    <Content Include="Scripts\src\utils\find.js" />
+    <Content Include="Scripts\src\utils\findCommonOffsetParent.js" />
+    <Content Include="Scripts\src\utils\findIndex.js" />
+    <Content Include="Scripts\src\utils\getBordersSize.js" />
+    <Content Include="Scripts\src\utils\getBoundaries.js" />
+    <Content Include="Scripts\src\utils\getBoundingClientRect.js" />
+    <Content Include="Scripts\src\utils\getClientRect.js" />
+    <Content Include="Scripts\src\utils\getFixedPositionOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetParent.js" />
+    <Content Include="Scripts\src\utils\getOffsetRect.js" />
+    <Content Include="Scripts\src\utils\getOffsetRectRelativeToArbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getOppositePlacement.js" />
+    <Content Include="Scripts\src\utils\getOppositeVariation.js" />
+    <Content Include="Scripts\src\utils\getOuterSizes.js" />
+    <Content Include="Scripts\src\utils\getParentNode.js" />
+    <Content Include="Scripts\src\utils\getPopperOffsets.js" />
+    <Content Include="Scripts\src\utils\getReferenceNode.js" />
+    <Content Include="Scripts\src\utils\getReferenceOffsets.js" />
+    <Content Include="Scripts\src\utils\getRoot.js" />
+    <Content Include="Scripts\src\utils\getRoundedOffsets.js" />
+    <Content Include="Scripts\src\utils\getScroll.js" />
+    <Content Include="Scripts\src\utils\getScrollParent.js" />
+    <Content Include="Scripts\src\utils\getStyleComputedProperty.js" />
+    <Content Include="Scripts\src\utils\getSupportedPropertyName.js" />
+    <Content Include="Scripts\src\utils\getViewportOffsetRectRelativeToArtbitraryNode.js" />
+    <Content Include="Scripts\src\utils\getWindow.js" />
+    <Content Include="Scripts\src\utils\getWindowSizes.js" />
+    <Content Include="Scripts\src\utils\includeScroll.js" />
+    <Content Include="Scripts\src\utils\index.js" />
+    <Content Include="Scripts\src\utils\isBrowser.js" />
+    <Content Include="Scripts\src\utils\isFixed.js" />
+    <Content Include="Scripts\src\utils\isFunction.js" />
+    <Content Include="Scripts\src\utils\isIE.js" />
+    <Content Include="Scripts\src\utils\isModifierEnabled.js" />
+    <Content Include="Scripts\src\utils\isModifierRequired.js" />
+    <Content Include="Scripts\src\utils\isNumeric.js" />
+    <Content Include="Scripts\src\utils\isOffsetContainer.js" />
+    <Content Include="Scripts\src\utils\removeEventListeners.js" />
+    <Content Include="Scripts\src\utils\runModifiers.js" />
+    <Content Include="Scripts\src\utils\setAttributes.js" />
+    <Content Include="Scripts\src\utils\setStyles.js" />
+    <Content Include="Scripts\src\utils\setupEventListeners.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\ConfirmEmail.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ForgotPassword.cshtml" />
+    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
+    <Content Include="Views\Account\SendCode.cshtml" />
+    <Content Include="Views\Account\VerifyCode.cshtml" />
+    <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
+    <Content Include="Views\Manage\ChangePassword.cshtml" />
+    <Content Include="Views\Manage\Index.cshtml" />
+    <Content Include="Views\Manage\ManageLogins.cshtml" />
+    <Content Include="Views\Manage\SetPassword.cshtml" />
+    <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\RoleNotAuthorized.cshtml" />
+    <Content Include="Views\UserOperations\Index.cshtml" />
+    <Content Include="Views\UserOperations\Details.cshtml" />
+    <Content Include="Views\UserOperations\Edit.cshtml" />
+    <Content Include="Views\CustomerOperations\Index.cshtml" />
+    <Content Include="Views\CustomerOperations\Create.cshtml" />
+    <Content Include="Views\CustomerOperations\Details.cshtml" />
+    <Content Include="Views\CustomerOperations\Edit.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.js.flow" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\CustomerOperations\_CustomerModifications.cshtml" />
+    <Content Include="Views\ListingOperations\Index.cshtml" />
+    <Content Include="Views\ListingOperations\Create.cshtml" />
+    <Content Include="Views\Shared\_SelectListToCheckBoxList.cshtml" />
+    <Content Include="Views\ListingOperations\Edit.cshtml" />
+    <Content Include="Views\ListingOperations\_ListingModification.cshtml" />
+    <Content Include="Views\ListingOperations\Details.cshtml" />
+    <Content Include="Views\Viewings\Create.cshtml" />
+    <Content Include="Views\Viewings\Delete.cshtml" />
+    <Content Include="Views\Viewings\Details.cshtml" />
+    <Content Include="Views\Viewings\Edit.cshtml" />
+    <Content Include="Views\Viewings\Index.cshtml" />
+    <Content Include="Views\UserOperations\Delete.cshtml" />
+    <Content Include="Views\CustomerOperations\Delete.cshtml" />
+    <Content Include="Views\ListingOperations\Delete.cshtml" />
+    <Content Include="Views\ListingOperations\SearchListing.cshtml" />
+    <Content Include="Views\UserOperations\UserProfile.cshtml" />
+    <Content Include="Views\UserOperations\UserVerificationList.cshtml" />
+    <Content Include="Views\Viewings\_ViewingModification.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Views\RoleFilter\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202101221532081_intialDb.resx">
+      <DependentUpon>202101221532081_intialDb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101221604142_updatingKeysUser.resx">
+      <DependentUpon>202101221604142_updatingKeysUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101231341327_MakingUserFKNullable.resx">
+      <DependentUpon>202101231341327_MakingUserFKNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101231438178_AddingOperatingUser.resx">
+      <DependentUpon>202101231438178_AddingOperatingUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101231904385_updatedKeysOnUser.resx">
+      <DependentUpon>202101231904385_updatedKeysOnUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101232146057_checkingState.resx">
+      <DependentUpon>202101232146057_checkingState.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101232153328_UpdatingFKForUser.resx">
+      <DependentUpon>202101232153328_UpdatingFKForUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241427443_Initial.resx">
+      <DependentUpon>202101241427443_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241431382_AddingCustomerEntity.resx">
+      <DependentUpon>202101241431382_AddingCustomerEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241437228_AddingCustomerEntity1.resx">
+      <DependentUpon>202101241437228_AddingCustomerEntity1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241437558_AddingCustomerEntity2.resx">
+      <DependentUpon>202101241437558_AddingCustomerEntity2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241439101_AddingCustoemrFkRelationShip.resx">
+      <DependentUpon>202101241439101_AddingCustoemrFkRelationShip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241440153_AddingCustmerWithFk.resx">
+      <DependentUpon>202101241440153_AddingCustmerWithFk.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241503139_AddDatePropToCustomer.resx">
+      <DependentUpon>202101241503139_AddDatePropToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241517352_addingChnages.resx">
+      <DependentUpon>202101241517352_addingChnages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241520586_addingCustoemrFkChanges.resx">
+      <DependentUpon>202101241520586_addingCustoemrFkChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241552092_UpodatingCustomerEntity.resx">
+      <DependentUpon>202101241552092_UpodatingCustomerEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241553152_AddingCustoemrEntity.resx">
+      <DependentUpon>202101241553152_AddingCustoemrEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241555089_AddingCustomerChnage.resx">
+      <DependentUpon>202101241555089_AddingCustomerChnage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241555421_AddingCustomerChange.resx">
+      <DependentUpon>202101241555421_AddingCustomerChange.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241605244_AddingCUserToCustoemrrelationship.resx">
+      <DependentUpon>202101241605244_AddingCUserToCustoemrrelationship.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241615052_RemovingKeys.resx">
+      <DependentUpon>202101241615052_RemovingKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241743280_DropCustomerTable.resx">
+      <DependentUpon>202101241743280_DropCustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101241744083_AddCustomerTable.resx">
+      <DependentUpon>202101241744083_AddCustomerTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101251010095_AddingRelationFromUserToCustomer.resx">
+      <DependentUpon>202101251010095_AddingRelationFromUserToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101251123400_AddingRelationsToCustomer.resx">
+      <DependentUpon>202101251123400_AddingRelationsToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101271012131_AddingCustomerAddressTable.resx">
+      <DependentUpon>202101271012131_AddingCustomerAddressTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101271056215_AddListing.resx">
+      <DependentUpon>202101271056215_AddListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101271841578_AddingChangesToDB.resx">
+      <DependentUpon>202101271841578_AddingChangesToDB.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301221018_ChanginFKRealtionInListing.resx">
+      <DependentUpon>202101301221018_ChanginFKRealtionInListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301232440_ChanginFKRealtionInListingCustomer.resx">
+      <DependentUpon>202101301232440_ChanginFKRealtionInListingCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301233474_ChanginFKRealtionInListingCustomer1.resx">
+      <DependentUpon>202101301233474_ChanginFKRealtionInListingCustomer1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301235015_ChanginFKRealtionInListingCustomer2.resx">
+      <DependentUpon>202101301235015_ChanginFKRealtionInListingCustomer2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301238073_ReAddingRelationshipsToListing.resx">
+      <DependentUpon>202101301238073_ReAddingRelationshipsToListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301240407_removingRelationToCustomerinListing.resx">
+      <DependentUpon>202101301240407_removingRelationToCustomerinListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301243391_addingRealtionToListing.resx">
+      <DependentUpon>202101301243391_addingRealtionToListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301244435_addingRealtionToListing1.resx">
+      <DependentUpon>202101301244435_addingRealtionToListing1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301245408_addingRealtionToListing11.resx">
+      <DependentUpon>202101301245408_addingRealtionToListing11.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301246541_addingRealtionToListing2.resx">
+      <DependentUpon>202101301246541_addingRealtionToListing2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301254309_reAddingRealtionToListingBetweenAsosciatedAgent.resx">
+      <DependentUpon>202101301254309_reAddingRealtionToListingBetweenAsosciatedAgent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301256125_reAddingRealtionToListingBetweenUsers.resx">
+      <DependentUpon>202101301256125_reAddingRealtionToListingBetweenUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301613572_AddingSummaryFeatureColumnToListing.resx">
+      <DependentUpon>202101301613572_AddingSummaryFeatureColumnToListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301632349_vAddingDateColumnsToListing.resx">
+      <DependentUpon>202101301632349_vAddingDateColumnsToListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301739222_AddingPriceColumn.resx">
+      <DependentUpon>202101301739222_AddingPriceColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101301741049_SettingPriceColumnToNotNullable.resx">
+      <DependentUpon>202101301741049_SettingPriceColumnToNotNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102021022088_removingOfficeEamilFromUserEntity.resx">
+      <DependentUpon>202102021022088_removingOfficeEamilFromUserEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102021117543_AddingNumberOfStoriesColumnToListing.resx">
+      <DependentUpon>202102021117543_AddingNumberOfStoriesColumnToListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102021128434_SettingNumberOfStoriedColumnToRequired.resx">
+      <DependentUpon>202102021128434_SettingNumberOfStoriedColumnToRequired.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102032131396_testingconn.resx">
+      <DependentUpon>202102032131396_testingconn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041536568_addingRelationBetweenUserToListing.resx">
+      <DependentUpon>202102041536568_addingRelationBetweenUserToListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041539190_removingRealtionListingToOperaitngUser.resx">
+      <DependentUpon>202102041539190_removingRealtionListingToOperaitngUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041549046_AddingRelationUserToListing.resx">
+      <DependentUpon>202102041549046_AddingRelationUserToListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041704115_updateListings.resx">
+      <DependentUpon>202102041704115_updateListings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041719116_droppingListing.resx">
+      <DependentUpon>202102041719116_droppingListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041724236_AddingRealtionShipUserToListing.resx">
+      <DependentUpon>202102041724236_AddingRealtionShipUserToListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041725420_AddingRealtionShipUserToListing1.resx">
+      <DependentUpon>202102041725420_AddingRealtionShipUserToListing1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041728253_AddingRealtionShipUserToListing2.resx">
+      <DependentUpon>202102041728253_AddingRealtionShipUserToListing2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041753378_checking.resx">
+      <DependentUpon>202102041753378_checking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041855229_changingAspNetUserTableColumn.resx">
+      <DependentUpon>202102041855229_changingAspNetUserTableColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041956395_InitialViewing.resx">
+      <DependentUpon>202102041956395_InitialViewing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102041959492_ViewingRequirement.resx">
+      <DependentUpon>202102041959492_ViewingRequirement.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102052050444_deletingAllOtherContextes.resx">
+      <DependentUpon>202102052050444_deletingAllOtherContextes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102091016486_AddingUserIsActiveColumn.resx">
+      <DependentUpon>202102091016486_AddingUserIsActiveColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102091800402_addingIsArchivedColumnToCustomer.resx">
+      <DependentUpon>202102091800402_addingIsArchivedColumnToCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102091804139_RenamingIsArchiveColumnToIsActiveColumnCustomer.resx">
+      <DependentUpon>202102091804139_RenamingIsArchiveColumnToIsActiveColumnCustomer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102091842028_addingIsActiveColumnInListing.resx">
+      <DependentUpon>202102091842028_addingIsActiveColumnInListing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102091914401_AddingIsActiveColumnToViewing.resx">
+      <DependentUpon>202102091914401_AddingIsActiveColumnToViewing.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202102251340586_checkingChanges.resx">
+      <DependentUpon>202102251340586_checkingChanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103021041304_AddingListingImageModel.resx">
+      <DependentUpon>202103021041304_AddingListingImageModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103021102338_addingIsArchivedColumnToListingImage.resx">
+      <DependentUpon>202103021102338_addingIsArchivedColumnToListingImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103021117335_addingRelationshipPropsandDatesProp.resx">
+      <DependentUpon>202103021117335_addingRelationshipPropsandDatesProp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103031721413_AddUserImageTable.resx">
+      <DependentUpon>202103031721413_AddUserImageTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103031925306_addingFKTOUserimageManually.resx">
+      <DependentUpon>202103031925306_addingFKTOUserimageManually.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103031934385_RemoveFKTOUserimageManually.resx">
+      <DependentUpon>202103031934385_RemoveFKTOUserimageManually.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103041222087_addingDriverLicensePropTOUser.resx">
+      <DependentUpon>202103041222087_addingDriverLicensePropTOUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103051138258_addingIsVerifiedColumnToUser.resx">
+      <DependentUpon>202103051138258_addingIsVerifiedColumnToUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103141134143_addingExpiryDateFeildTOUserImageUpload.resx">
+      <DependentUpon>202103141134143_addingExpiryDateFeildTOUserImageUpload.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103152004472_addingDefaultImageColumn.resx">
+      <DependentUpon>202103152004472_addingDefaultImageColumn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202103181013181_addingThumbNailColumnInListingImage.resx">
+      <DependentUpon>202103181013181_addingThumbNailColumnInListingImage.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49388</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44372/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.3.8.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.3.8.0\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

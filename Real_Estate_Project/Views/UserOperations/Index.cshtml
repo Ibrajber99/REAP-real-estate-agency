@@ -1,0 +1,116 @@
+﻿@model Real_Estate_Project.ViewModels.OperatingUserViewModel
+@using PagedList.Mvc;
+
+@{ ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="row">
+    <div class="jumbotron card border-info mb-3" style="margin: 0 auto;">
+        <div class="row">
+            <h1 class="display-4" style="margin:0 auto;">Users</h1>
+        </div>
+        <br />
+        <div class="row">
+            <p class="lead" style="margin:0 auto;">Creating Users has never been this easy before. Try it out yourself!</p>
+        </div>
+        <br />
+        <hr />
+        <div class="row">
+            <button class="btn btn-outline-warning" style="margin: 0 auto;">
+                @Html.ActionLink("Register a User", "CreateUser", "RoleFilter")
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<br />
+<br />
+
+@if (Model.usersList != null)
+{
+<div class="row">
+    <div class="col-12">
+        <div class="row">
+            @foreach (var item in Model.usersList)
+            {
+<div class="col-3">
+    <div class="flip-card text-white bg-dark mb-3 card border-success mb-3">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                @if (item.ProfileImage != null)
+                {
+<img class="card-img-top" src="@Url.Action("DisplayProfileImage", new { id = item.ProfileImage.ID })"
+     alt="Listing Image" style="height:inherit" /> }
+else
+{
+<img class="card-img-top" src="https://www.flaticon.com/premium-icon/icons/svg/3093/3093091.svg">}
+            </div>
+            <div class="flip-card-back">
+                <h5 class="card-title">@item.UserName</h5>
+                <hr />
+                <div class="form-group">
+                    @Html.LabelFor(model => item.FirstName, new { @class = "text-success" })
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => item.MiddleName, new { @class = "text-success" })
+                    @Html.DisplayFor(modelItem => item.MiddleName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => item.LastName, new { @class = "text-success" })
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => item.RoleID, new { @class = "text-success" })
+                    @Html.DisplayFor(modelItem => item.RoleID)
+                </div>
+                <br />
+                <br />
+
+                <span style="font-size:x-large">
+                    <a href="@Url.Action("EditUser", "RoleFilter", new { id = item.ID })">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                </span>
+                |
+                <span style="font-size:x-large">
+                    <a href="@Url.Action("GetUserDetails", "RoleFilter", new { id = item.ID })">
+                        <i class="fas fa-info-circle"></i>
+                    </a>
+                </span>
+                |
+                <span style="font-size:x-large">
+                    <a href="@Url.Action("Delete", "Useroperations", new { id = item.ID })">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>}
+        </div>
+        <div class="card text-white bg-dark mb-3 card border-success mb-3">
+            <div class="row">
+                <div class="col-6">
+                    Page @(Model.usersList.PageCount < Model.usersList.PageNumber ? 0 : Model.usersList.PageNumber) of @Model.usersList.PageCount
+                    @Html.PagedListPager(Model.usersList, page => Url.Action("Index", new { page = page }))
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>}
+
+
+
+
+@Styles.Render("~/Content/custom/CardFlip.css")
+
+
+

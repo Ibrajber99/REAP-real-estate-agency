@@ -1,0 +1,93 @@
+﻿
+@model Real_Estate_Project.ViewModels.ListingViewModel
+@using Real_Estate_Project.DataAccess.Data_Models
+@using Real_Estate_Project.Models
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<div class="card text-white bg-dark mb-3" style="margin-bottom:2em;">
+    <div class="card-body">
+        @using (Html.BeginForm("Edit", "ListingOperations",
+            FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(model => model.InputModel.ID)
+            @Html.HiddenFor(model => model.InputModel.DateCreated)
+            @Html.HiddenFor(model => model.InputModel.UserCreatorId)
+            @Html.HiddenFor(model => model.InputModel.ListingAddress.ID)
+            @Html.HiddenFor(model => model.InputModel.ListingAddressID)
+            @Html.HiddenFor(model => model.InputModel.IsActive)
+
+        <div class="form-horizontal">
+            <h4>Listing</h4>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <div class="row">
+                <div class="col-4">
+                    <div class="card text-white bg-secondary mb-3">
+                        <div class="card-body">
+                            @if (Model.ExistingListingImages.Count > 0)
+                            {
+                                    <div class="card-group">
+                                        @for (int i = 0; i < Model.ExistingListingImages.Count; i++)
+                                        {
+                                            <div class="col-6">
+                                                <br />
+                                                <div class="card text-white bg-dark mb-3">
+                                                    <div class="card-body">
+                                                        <div class="card-title">
+                                                            <img src="@Url.Action("DisplayFullImage", new { id= Model.ExistingListingImages[i].Value})"
+                                                                 alt="Listing Image" style="width: 50%;" />
+                                                        </div>
+                                                        @Html.CheckBoxFor(m => m.ExistingListingImages[i].Selected)
+                                                        @Html.Label("Check to remove")
+
+                                                        <br />
+
+                                                        @Html.ActionLink("Set as Default Image", "SetDefaultImage", "ListingOperations"
+                                                        , new{imageId = Model.ExistingListingImages[i].Value,
+                                                        listingId = Model.InputModel.ID}, new { @class = "text-info" })
+
+                                                        @Html.HiddenFor(m => m.ExistingListingImages[i].Value)
+                                                        @Html.HiddenFor(m => m.ExistingListingImages[i].Text)
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                         }
+                                    </div>
+                            }
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ListingImageFiles, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="col-md-10">
+                                    @Html.TextBoxFor(model => model.ListingImageFiles, "", new { @type = "file", @multiple = "multiple" })
+                                    @Html.ValidationMessageFor(model => model.ListingImageFiles, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-8">
+                    @Html.Partial("_ListingModification", Model)
+                    <div class="form-group">
+                        <div class="col-md-offset-2 col-md-10">
+                            <input type="submit" value="Save" class="btn btn-outline-success" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

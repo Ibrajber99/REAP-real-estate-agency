@@ -1,0 +1,300 @@
+﻿@model Real_Estate_Project.ViewModels.HomePageViewModel
+@using PagedList.Mvc;
+
+
+@{ ViewBag.Title = "Home Page";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+
+<div class="col-7">
+    @if (Model.Listings.Count > 0)
+    {
+        <div class="card text-white bg-dark mb-3 card border-success mb-3" style="padding-left:1em; padding-top:1em;">
+            <div class="row">
+                <div class="col-6">
+                    Page @(Model.Listings.PageCount < Model.Listings.PageNumber ? 0 : Model.Listings.PageNumber) of @Model.Listings.PageCount
+                    @Html.PagedListPager(Model.Listings, page => Url.Action("Index", new { page = page, CurrentSearch = Model.CurrentSearch }))
+                </div>
+
+
+                <div class="col-6">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-inline">
+                            <h4 style="margin-right:1em;">Search by City name</h4>
+                            @Html.TextBoxFor(model => model.CurrentSearch)
+                            <button type="submit" value="Im feeling lucky" class="btn btn-outline-success" style="margin-left:1em;">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    }
+    </div>
+
+<div class="row">
+    <div class="col-8">
+        @if (Model.Listings.Count > 0)
+        {
+            <div class="row">
+                @foreach (var item in Model.Listings)
+                {
+                    <div class="col-4" style="margin-bottom:3em">
+                        <div class="flip-card text-white bg-dark mb-3 card border-info mb-3">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front">
+                                    @if (item != null)
+                                    {
+                                        <img class="card-img-top" src="@Url.Action("DisplayFile", new { id = item.ID })"
+                                             alt="Listing Image" style="height:inherit" />
+
+                                    }
+                                    else
+                                    {
+                                        <img class="card-img-top" src="https://www.flaticon.com/premium-icon/icons/svg/2243/2243783.svg">
+                                    }
+                                </div>
+                                <div class="flip-card-back">
+                                    <h5 class="card-title">@item.AssociatedAgent.FullName</h5>
+                                    <hr />
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => item.Price, new { @class = "text-success" })
+                                        @Html.DisplayFor(modelItem => item.Price)
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => item.ListingAddress.Municipality, new { @class = "text-success" })
+                                        @Html.DisplayFor(modelItem => item.ListingAddress.Municipality)
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => item.SquareFootage, new { @class = "text-success" })
+                                        @Html.DisplayFor(modelItem => item.SquareFootage)
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => item.NumOfBeds, new { @class = "text-success" })
+                                        @Html.DisplayFor(modelItem => item.NumOfBeds)
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => item.NumOfBaths, new { @class = "text-success" })
+                                        @Html.DisplayFor(modelItem => item.NumOfBaths)
+                                    </div>
+                                    <span style="font-size:xx-large">
+                                        <a href="@Url.Action("Index", "Home", new
+                                        {
+                                            requestedListingId = item.ID,
+                                            page = Model.CurrentPage,
+                                            CurrentSearch = Model.CurrentSearch
+                                        })">
+                                            <i class="fab fa-searchengin"></i>
+                                        </a>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="jumbotron card border-danger mb-3">
+                <div class="row">
+                    <p class="lead" style="margin:0 auto;">No Listings to show</p>
+                </div>
+            </div>
+        }
+    </div>
+        <div class="col-4">
+            @if (Model.CurrentViewedListing != null)
+            {
+                <div class="card text-white bg-dark mb-3">
+                    <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+                        @if (Model.CurrentViewedListing.ImagesContent.Count > 0)
+                        {
+                            <div class="carousel-inner">
+                                @for (int i = 0; i < Model.CurrentViewedListing.ImagesContent.Count; i++)
+                                {
+                                    if (i == 0)
+                                    {
+                                        <div class="carousel-item active">
+                                            <img src="@Url.Action("DisplayFullImage", new { id = Model.CurrentViewedListing.ImagesContent.ToArray()[i].ID })"
+                                                 alt="Listing Image" style="height:300px; width:600px;" />
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div class="carousel-item">
+                                            <img src="@Url.Action("DisplayFullImage", new { id = Model.CurrentViewedListing.ImagesContent.ToArray()[i].ID })"
+                                                 alt="Listing Image" style="height:300px; width:600px;" />
+                                        </div>
+                                    }
+                                }
+
+                            </div>
+                        }
+                        <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <h5 class="card-title">Basic Information</h5>
+                        <hr />
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.Customer, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.Customer.FullName)
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.Price, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.Price)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.AssociatedAgent, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.AssociatedAgent.FullName)
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.ListingAddress.StreetAddress, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.ListingAddress.StreetAddress)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.ListingAddress.Municipality, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.ListingAddress.Municipality)
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.ListingAddress.Province, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.ListingAddress.Province)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.ListingAddress.PostalCode, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.ListingAddress.PostalCode)
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.ListingAddress.AddressDetails, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.ListingAddress.AddressDetails)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.SquareFootage, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.SquareFootage)
+                                </div>
+
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.NumOfBeds, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.NumOfBeds)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.NumOfBaths, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.NumOfBaths)
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.CityArea, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.CityArea)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.SummaryFeature, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.CurrentViewedListing.SummaryFeature)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-6">
+                                <ul class="list-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.Heating, new { @class = "list-group-item active" })
+                                    @foreach (var item in Model.CurrentViewedListing.Heating)
+                                    {
+                                        <li class="list-group-item text-dark">@item.HeatingType</li>
+                                    }
+                                </ul>
+                            </div>
+                            <div class="col-6">
+                                <ul class="list-group">
+                                    @Html.LabelFor(model => model.CurrentViewedListing.Features, new { @class = "list-group-item active" })
+
+                                    @foreach (var item in Model.CurrentViewedListing.Features)
+                                    {
+                                        <li class="list-group-item text-dark">@item.FeatureName</li>
+                                    }
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+@Styles.Render("~/Content/custom/CardFlip.css")
+
+<style>
+    body {
+        background-image: url("https://images.unsplash.com/photo-1612016833932-0e1ab9d1226f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80") !important
+    }
+
+    .carousel-item:hover {
+        color: #424242;
+        -webkit-transition: all .3s ease-in;
+        -moz-transition: all .3s ease-in;
+        /*        -ms-transition: all .3s ease-in;*/
+        -o-transition: all .3s ease-in;
+        transition: all .3s ease-in;
+        opacity: 1;
+        transform: scale(1.15);
+        -ms-transform: scale(1.15); /* IE 9 */
+        -webkit-transform: scale(1.15); /* Safari and Chrome */
+    }
+</style>
+
+
+
+

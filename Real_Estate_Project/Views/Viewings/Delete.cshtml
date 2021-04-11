@@ -1,0 +1,61 @@
+﻿@model Real_Estate_Project.ViewModels.ViewingViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Viewing</h4>
+    <hr />
+    <div class="card">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="card-body">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Basic Information</h5>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ReadonlyViewingModel.ViewingHost, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.ReadonlyViewingModel.ViewingHost.FullName)
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ReadonlyViewingModel.Customer, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.ReadonlyViewingModel.Customer.FullName)
+                                </div>
+
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ReadonlyViewingModel.StartDate, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.ReadonlyViewingModel.StartDate)
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-group">
+                                    @Html.LabelFor(model => model.ReadonlyViewingModel.EndDate, new { @class = "text-primary" })
+                                    @Html.DisplayFor(model => model.ReadonlyViewingModel.EndDate)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(model => model.ReadonlyViewingModel.ID)
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+                    @Html.ActionLink("Back to List", "Index")
+                </div>
+            }
+        </div>
+    </div>
+
+</div>

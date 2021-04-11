@@ -1,0 +1,47 @@
+﻿@model Real_Estate_Project.ViewModels.ViewingViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="card text-white bg-dark mb-3">
+        <div class="card-body">
+            <h1 style="text-align:center;">Book a Viewing</h1>
+            <hr />
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.ListingId)
+
+            @Html.Partial("_ViewingModification",Model)
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-outline-success" />
+            </div>
+        </div>
+        <div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+    <div class="form-horizontal">
+
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+        $(function () {
+
+            $("#AgentId").chosen();
+            $("#CustomerID").chosen();
+        });
+    </script>
+}
+
+

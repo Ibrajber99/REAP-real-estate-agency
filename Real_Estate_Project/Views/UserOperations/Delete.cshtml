@@ -1,0 +1,47 @@
+﻿@model Real_Estate_Project.ViewModels.OperatingUserViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h4>OperatingUser</h4>
+        <h3>Are you sure you want to delete this?</h3>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.InputModel.UserName)
+            @Html.DisplayFor(model => model.InputModel.UserName)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.InputModel.DateOfBirth)
+
+            @Html.DisplayFor(model => model.InputModel.DateOfBirth)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.InputModel.RoleID)
+            @Html.DisplayFor(model => model.InputModel.RoleID)
+        </div>
+
+        <div class="form-group">
+            @Html.DisplayNameFor(model => model.InputModel.FullName)
+            @Html.DisplayFor(model => model.InputModel.FullName)
+        </div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete" class="btn btn-outline-danger" /> |
+                @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>
+

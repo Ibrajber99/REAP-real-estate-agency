@@ -1,0 +1,94 @@
+﻿@model Real_Estate_Project.ViewModels.CustomerViewModel
+@using Real_Estate_Project.DataAccess.Data_Models
+
+
+<div class="row">
+    <div class="col-6">
+        @Html.LabelFor(model => model.inputModel.FirstName, htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.inputModel.FirstName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.inputModel.FirstName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-6">
+        @Html.LabelFor(model => model.inputModel.LastName, htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.inputModel.LastName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.inputModel.LastName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        @Html.LabelFor(model => model.inputModel.MiddleName, htmlAttributes: new { @class = "control-label col-8" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.inputModel.MiddleName, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.inputModel.MiddleName, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="col-6">
+        @Html.LabelFor(model => model.inputModel.CustomerAddress.StreetAddress, htmlAttributes: new { @class = "control-label col-8" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.inputModel.CustomerAddress.StreetAddress, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.inputModel.CustomerAddress.StreetAddress, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+
+<hr />
+<div class="row">
+    <div class="col-6">
+        @Html.LabelFor(model => model.inputModel.CustomerAddress.Municipality, htmlAttributes: new { @class = "control-label col-md-8" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.inputModel.CustomerAddress.Municipality, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.inputModel.CustomerAddress.Municipality, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-6">
+        @Html.LabelFor(model => model.inputModel.CustomerAddress.Province, htmlAttributes: new { @class = "control-label col-md-8" })
+        <div class="col-md-10">
+            @Html.DropDownListFor(model => model.inputModel.CustomerAddress.Province,
+                     new SelectList(Provinces.ProvinceMap, "Value", "Key"), "Select province")
+            @Html.ValidationMessageFor(model => model.inputModel.CustomerAddress.Province, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-6">
+        @Html.LabelFor(model => model.inputModel.CustomerAddress.PostalCode, htmlAttributes: new { @class = "control-label col-8" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.inputModel.CustomerAddress.PostalCode, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.inputModel.CustomerAddress.PostalCode, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-6">
+        @Html.LabelFor(model => model.inputModel.PhoneNumber, htmlAttributes: new { @class = "control-label col-6" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.inputModel.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.inputModel.PhoneNumber, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+<hr />
+<div class="row">
+    <div class="col-6">
+        @Html.LabelFor(model => model.inputModel.Email, htmlAttributes: new { @class = "control-label col-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.inputModel.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.inputModel.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="col-6">
+        @Html.LabelFor(model => model.inputModel.dateOfBirth, htmlAttributes: new { @class = "control-label col-8" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.inputModel.dateOfBirth, new { htmlAttributes = new { @class = "form-control", type = "Date" } })
+            @Html.ValidationMessageFor(model => model.inputModel.dateOfBirth, "", new { @class = "text-danger" })
+        </div>
+    </div>
+</div>
+

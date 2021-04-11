@@ -1,0 +1,94 @@
+﻿@model Real_Estate_Project.ViewModels.CustomerViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+<div class="row">
+    <div class="col-4">
+       <div class="jumbotron card border-info mb-3">
+           <div class="row">
+               <h1 class="display-4" style="margin:0 auto;">Customers</h1>
+           </div>
+           <br />
+           <div class="row">
+               <p class="lead" style="margin:0 auto;">Register your customers to unlock the full potential of REAP</p>
+           </div>
+           <br />
+           <hr />
+           <div class="row">
+               <button class="btn btn-outline-warning" style="margin: 0 auto;">
+                   @Html.ActionLink("Register Customer", "CreateCustomer", "RoleFilter")
+               </button>
+           </div>
+     </div>
+</div>
+
+
+<div class="col-6">
+    @if (Model.customerList.Count > 0)
+    {
+        <div style="height:40em;width:70em;overflow:auto;padding-left:1em; padding-right:1em;">
+            <div class="card text-white bg-secondary mb-3 ">
+                <div class="card-body">
+                    <div class="row">
+                        @foreach (var item in Model.customerList)
+                        {
+                             <div class="col-4">
+                                 <div class="card text-white bg-dark mb-3  mb-3 card border-success mb-3">
+                                     <div class="card-body">
+                                         <img class="card-img-top" src="https://www.flaticon.com/premium-icon/icons/svg/2967/2967324.svg"
+                                              style="width:20%;height:20%;">
+                                         <h5 class="card-title">@item.FullName</h5>
+                                         <hr />
+                                         <div class="form-group">
+                                             @Html.LabelFor(model => model.inputModel.PhoneNumber, new { @class = "text-success" })
+                                             @Html.DisplayFor(modelItem => item.PhoneNumber)
+                                         </div>
+
+                                         <div class="form-group">
+                                             @Html.LabelFor(model => model.inputModel.CustomerAddress.Municipality, new { @class = "text-success" })
+                                             @Html.DisplayFor(modelItem => item.CustomerAddress.Municipality)
+                                         </div>
+
+                                         <div class="form-group">
+                                             @Html.LabelFor(model => model.inputModel.CustomerAddress.PostalCode, new { @class = "text-success" })
+                                             @Html.DisplayFor(modelItem => item.CustomerAddress.PostalCode)
+                                         </div>
+
+                                         <a href="@Url.Action("EditCustomer", "RoleFilter", new { id = item.ID })">
+                                             <i class="fas fa-edit"></i>
+                                         </a>
+                                         |
+                                         <a href="@Url.Action("GetCustomerDetails", "RoleFilter", new { id = item.ID })">
+                                             <i class="fas fa-info-circle"></i>
+                                         </a>
+                                         |
+                                         <a href="@Url.Action("Delete", "CustomerOperations", new { id = item.ID })">
+                                             <i class="fas fa-trash-alt"></i>
+                                         </a>
+                                     </div>
+                                 </div>
+                             </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="jumbotron card border-danger mb-3">
+            <div class="row">
+                <p class="lead" style="margin:0 auto;">No Customers Available</p>
+            </div>
+        </div>
+    }
+
+</div>
+</div>
+
+

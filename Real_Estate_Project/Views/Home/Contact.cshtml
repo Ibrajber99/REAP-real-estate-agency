@@ -1,0 +1,39 @@
+﻿@{ ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<div class="team-grid">
+    <div class="container">
+        <div class="intro">
+            <h2 class="text-center">Meet Our Team</h2>
+        </div>
+        <div class="row people d-flex justify-content-center">
+            <div class="col-md-5 col-lg-3 item">
+                <div class="box" style="background-image:url(@Url.Content("~/Content/SiteImages/profileImg.png"))">
+                    <div class="cover">
+                        <h3 class="name">Ibrahim Jaber</h3>
+                        <p class="title">Back-end Developer</p>
+                        <div class="social"><a href="https://www.linkedin.com/in/ibrahimjaberag/"><i class="fab fa-linkedin"></i></a><a href="https://github.com/Ibrajber99"><i class="fab fa-github"></i></a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 col-lg-3 item">
+                <div class="box" style="background-image:url(@Url.Content("~/Content/SiteImages/prfile_pic.png"))">
+                    <div class="cover">
+                        <h3 class="name">Ali Emir Samlioglu</h3>
+                        <p class="title">UI/UX Designer</p>
+                        <div class="social"><a href="https://www.linkedin.com/in/ali-emir-samlioglu/"><i class="fab fa-linkedin"></i></a><a href="https://github.com/aliemir99"><i class="fab fa-github"></i></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    body {
+        background-image: url("https://images.unsplash.com/photo-1559021357-26f792381440?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80") !important
+    }
+</style>
+
+@Styles.Render("~/Content/custom/ContactPagecss.css")
+

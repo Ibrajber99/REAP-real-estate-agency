@@ -1,0 +1,208 @@
+﻿@model Real_Estate_Project.ViewModels.OperatingUserViewModel
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div class="row">
+    <div class="col-3">
+        <div class="card text-white bg-dark mb-3">
+            @if (Model.InputModel.ProfileImage != null)
+            {
+                <img src="@Url.Action("DisplayProfileImage", new { id = Model.InputModel.ProfileImage.ID })"
+                     alt="Listing Image" class="d-block w-100" />
+            }
+            else
+            {
+                <img class="card-img-top" src="https://www.flaticon.com/premium-icon/icons/svg/3093/3093091.svg"
+                     style="width:5em;height:5em;"><br />
+            }
+
+            <h5 class="card-title">User: @Model.InputModel.UserName</h5>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InputModel.RegistrationDate, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.InputModel.RegistrationDate)
+                        </div>
+                    </div>
+                    <div class="col-6">
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InputModel.UserCreator, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.InputModel.UserCreator.FullName)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-6">
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InputModel.UpdatedDate, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.InputModel.UpdatedDate)
+                        </div>
+
+                    </div>
+                    <div class="col-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.InputModel.UserUpdator, new { @class = "text-primary" })
+                            @Html.DisplayFor(model => model.InputModel.UserUpdator.FullName)
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        @Html.LabelFor(model => model.InputModel.IsVerified, new { @class = "text-primary" })
+                        @if (Model.InputModel.IsVerified)
+                        {
+                            @Html.Label("Verified", new { @class = "text-success" })
+                        }
+                        else
+                        {
+                            @Html.Label("Under review", new { @class = "text-danger" })
+                        }
+                    </div>
+                </div>
+            </div>
+            <a class="btn btn-outline-warning" role="button" href="@Url.Action("Edit","UserOperations",new {id =  Model.InputModel.ID})">Edit</a>
+            <a class="btn btn-outline-danger" role="button" href="@Url.Action("Index","UserOperations")">Back to List</a>
+        </div>
+    </div>
+    <div class="col-9" style="margin-bottom:3em">
+        <div class="card text-white bg-secondary mb-3" style="margin-bottom:2em;">
+            <div class="card-body">
+                <br />
+                <div class="row">
+                    <div class="col-6">
+                        <div class="card text-white bg-dark mb-3" padding-bottom:1.5em;">
+                            <div class="card-body">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <h5 class="card-title">Basic Information</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.RoleID, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.RoleID)
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.UserName, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.UserName)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.FirstName, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.FirstName)
+                                        </div>
+
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.MiddleName, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.MiddleName)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.LastName, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.LastName)
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.SocialSecurityNumber, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.MaskedSINnum)
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="col-6">
+                        <div class="card text-white bg-dark mb-3">
+                            <div class="card-body">
+                                <h5 class="card-title">Contact Information</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.StreetAddress, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.StreetAddress)
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.Municipality, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.Municipality)
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.Province, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.Province)
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.PostalCode, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.PostalCode)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.HomePhone, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.HomePhone)
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.CellPhone, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.CellPhone)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.OfficePhoneNumber, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.OfficePhoneNumber)
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => model.InputModel.DateOfBirth, new { @class = "text-primary" })
+                                            @Html.DisplayFor(model => model.InputModel.DateOfBirth)
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+
+

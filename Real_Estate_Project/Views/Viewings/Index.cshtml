@@ -1,0 +1,132 @@
+﻿@model Real_Estate_Project.ViewModels.ViewingViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br />
+<br />
+
+<div class="row">
+    <div class="col-4">
+        <div class="jumbotron card border-info mb-3">
+            <h1 style="text-align:center">Viewings</h1>
+            <hr />
+            <div class="row">
+                <div class="card text-white bg-dark mb-3" style=" margin:0 auto">
+                    <div class="card-body">
+                        <h5 class="card-title" style="text-align:center">Filter By Date</h5><hr />
+                        <div class="col-12">
+                            @using (Html.BeginForm("GetViewingsByDateRange", "Viewings", FormMethod.Post))
+                            {
+                                <div class="row">
+                                    <div class="col-6">
+                                        @Html.LabelFor(model => model.ViewingDateFilter.StartingDateRange, htmlAttributes: new { @class = "control-label col-6" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ViewingDateFilter.StartingDateRange, new { htmlAttributes = new { @class = "form-control", type = "Date" } })
+                                            @Html.ValidationMessageFor(model => model.ViewingDateFilter.StartingDateRange, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-6">
+                                        @Html.LabelFor(model => model.ViewingDateFilter.EndingDateRange, htmlAttributes: new { @class = "control-label col-6" })
+                                        <div class="col-md-10">
+                                            @Html.EditorFor(model => model.ViewingDateFilter.EndingDateRange, new { htmlAttributes = new { @class = "form-control", type = "Date" } })
+                                            @Html.ValidationMessageFor(model => model.ViewingDateFilter.EndingDateRange, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <br />
+                                <div class="col-4">
+                                    <div class="col-md-10">
+                                        <input type="submit" value="See Available Viewings" class="btn btn-outline-info" />
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row" style="margin: 0 auto;">
+
+                    <button class="btn btn-outline-warning" style="margin-right: 50px; margin-top:20px;">
+                        @Html.ActionLink("Create New", "Create")
+                    </button>
+
+                    <button class="btn btn-outline-danger" style="margin-left: 50px; margin-top:20px;">
+                        @Html.ActionLink("See all Viewings", "GetAllViewings")
+                    </button>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-6">
+        @if (Model.Viewings.Count > 0)
+        {
+            <div style="height:40em;width:70em;overflow:auto;padding-left:1em; padding-right:1em;">
+                <div class="card text-white bg-secondary mb-3 ">
+                    <div class="card-body">
+                        <div class="row">
+                            @foreach (var item in Model.Viewings)
+                            {
+                            <div class="col-4" style="margin-bottom:3em">
+                                <div class="card text-white bg-dark mb-3 card border-success mb-3">
+                                    <div class="card-body">
+                                        <img class="card-img-top" src="https://www.flaticon.com/premium-icon/icons/svg/3638/3638766.svg"
+                                             style="width:20%;height:20%;">
+                                        <h5 class="card-title"></h5>
+                                        <hr />
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => item.Customer, new { @class = "text-success" })
+                                            @Html.DisplayFor(modelItem => item.Customer.FullName)
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => item.ViewingHost, new { @class = "text-success" })
+                                            @Html.DisplayFor(modelItem => item.ViewingHost.FullName)
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => item.Listing, new { @class = "text-success" })
+                                            @Html.DisplayFor(modelItem => item.Listing.ListingAddress.PostalCode)
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(model => item.StartDate, new { @class = "text-success" })
+                                            @Html.DisplayFor(modelItem => item.StartDate)
+                                        </div>
+
+                                        <a href="@Url.Action("Edit", "Viewings", new { id = item.ID })">
+                                            <i class="fas fa-edit"></i>
+                                        </a>
+                                        |
+                                        <a href="@Url.Action("Details", "Viewings", new { id = item.ID })">
+                                            <i class="fas fa-info-circle"></i>
+                                        </a>
+                                        |
+                                        <a href="@Url.Action("Delete", "Viewings", new { id = item.ID })">
+                                            <i class="fas fa-trash-alt"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        }
+        else
+        {
+            <div class="jumbotron card border-danger mb-3">
+                <div class="row">
+                    <p class="lead" style="margin:0 auto;">No Viewings Available</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
