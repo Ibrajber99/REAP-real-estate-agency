@@ -8,11 +8,13 @@ dsfds
     -The backend design is MVC using Repository pattern for the database resources
     -It uses Entity Framework 6.0 as an ORM package and code first approch for the db design.
     -Entites are mapped to viewmodels for lower coupling.
+    -using Asp.Idenity for authentication and authorization
     -using Unity containers for Dependency Injection.
   
   
 ## Features
     -Website supports CRUD operations for all entites in the website
+    -Supports authentication and authorization
     -File uplaod for images is supported
     -Using Chart.Js and quick chart for data visulization
     
